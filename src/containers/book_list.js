@@ -1,3 +1,7 @@
+/*\
+Simple example of a container that consumes hard coded data or sync data, maybe from local storage
+ */
+
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 //this is just a function imported from another file
@@ -12,7 +16,7 @@ class BookList extends Component{
             //make sure you use arrow function for the click inside of a loop in order to create the closure on the b variable
             return(
                 <li
-                xxxcomment=''
+                xxxcomment='use the arrow function to maintain this, else if you use a function directly off the component you have to do the bind thing'
                  onClick={()=>this.props.selectBook(b)}
                  key={b.title} >
                  {b.title}

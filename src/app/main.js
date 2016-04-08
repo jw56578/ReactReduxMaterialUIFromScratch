@@ -15,15 +15,17 @@ import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import BookList from '../containers/book_list';
 import BookDetail from '../containers/book_detail';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {fetchSomething} from '../actions/action_ajax';
 
+//this is how you inline styles in react
 const styles = {
   container: {
     textAlign: 'center',
     paddingTop: 200,
   },
 };
-
-
 
 const AppBarExampleIconMenu = () => (
   <AppBar
@@ -51,6 +53,14 @@ class Main extends React.Component {
     this.state = {
       open: false,
     };
+    //this is what you have to do when using es6 and webpack/babel compiler
+    //the functions aren't bound properly so you have to manually do it
+    this.doAjaxStuff = this.doAjaxStuff.bind(this);
+  }
+  doAjaxStuff(){
+      debugger;
+      this.props.fetchSomething();
+      
   }
   render() {
       const standardActions = (
@@ -65,6 +75,7 @@ class Main extends React.Component {
         <div>
           <AppBarExampleIconMenu/>
           <DatePicker hintText="Landscape Inline Dialog" container="inline" mode="landscape" />
+          <button onClick={this.doAjaxStuff}>Do ajax stuff</button>
           <BookList />
           <BookDetail />
            <div style={styles.container}>
@@ -87,4 +98,7 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({fetchSomething},dispatch);
+}
+export default connect(null,mapDispatchToProps)(Main);
