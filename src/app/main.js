@@ -12,6 +12,7 @@ import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
 import Dialog from 'material-ui/lib/dialog';
+import FlatButton from 'material-ui/lib/flat-button';
 
 const styles = {
   container: {
@@ -50,13 +51,29 @@ class Main extends React.Component {
     };
   }
   render() {
+      const standardActions = (
+      <FlatButton
+        label="Ok"
+        secondary={true}
+        onTouchTap={()=>this.setState({open:false})}
+      />
+    );
+    
     return (
         <div>
           <AppBarExampleIconMenu/>
           <DatePicker hintText="Landscape Inline Dialog" container="inline" mode="landscape" />
            <div style={styles.container}>
+             <Dialog
+            open={this.state.open}
+            title="Hello World"
+            actions={standardActions}
+            onRequestClose={()=>this.setState({open:false})}
+          >
+            1-2-3-4-5
+          </Dialog>
            <RaisedButton
-            label="Super Secret Password"
+            label="Click to show dialog"
             primary={true}
             onTouchTap={()=>this.setState({open:true})}
             />
