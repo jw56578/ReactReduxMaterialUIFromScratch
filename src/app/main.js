@@ -18,7 +18,7 @@ import BookDetail from '../containers/book_detail';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchSomething} from '../actions/action_ajax';
-
+import ShowAjaxResult from '../containers/ajax_promise_consumer';
 //this is how you inline styles in react
 const styles = {
   container: {
@@ -74,6 +74,7 @@ class Main extends React.Component {
           <AppBarExampleIconMenu/>
           <DatePicker hintText="Landscape Inline Dialog" container="inline" mode="landscape" />
           <button onClick={this.doAjaxStuff}>Do ajax stuff</button>
+          <ShowAjaxResult />
           <BookList />
           <BookDetail />
            <div style={styles.container}>
