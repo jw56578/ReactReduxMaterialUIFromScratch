@@ -58,9 +58,7 @@ class Main extends React.Component {
     this.doAjaxStuff = this.doAjaxStuff.bind(this);
   }
   doAjaxStuff(){
-      debugger;
-      this.props.fetchSomething();
-      
+      this.props.fetchSomething(); 
   }
   render() {
       const standardActions = (
