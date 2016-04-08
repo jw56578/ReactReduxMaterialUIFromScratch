@@ -11,7 +11,7 @@ import NavigationClose from 'material-ui/lib/svg-icons/navigation/close';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import MenuItem from 'material-ui/lib/menus/menu-item';
-
+import DatePicker from 'material-ui/lib/date-picker/date-picker';
 const AppBarExampleIconMenu = () => (
   <AppBar
     title="Title"
@@ -40,6 +40,7 @@ class Main extends React.Component {
     return (
         <div>
           <AppBarExampleIconMenu/>
+          <DatePicker hintText="Landscape Inline Dialog" container="inline" mode="landscape" />
       </div>
     );
   }
