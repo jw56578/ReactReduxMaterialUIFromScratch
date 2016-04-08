@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
+//this is just a function imported from another file
+//this could have just been a function inside this file
 import {selectBook} from '../actions';
 import {bindActionCreators} from 'redux';
 
@@ -10,12 +12,13 @@ class BookList extends Component{
             //make sure you use arrow function for the click inside of a loop in order to create the closure on the b variable
             return(
                 <li
+                xxxcomment=''
                  onClick={()=>this.props.selectBook(b)}
                  key={b.title} >
                  {b.title}
                  </li>
             );
-        });
+        });   
     }
     render(){
         return(
@@ -25,6 +28,7 @@ class BookList extends Component{
         );
     }
 }
+//state is whatever is defined in the main reducer '../reducers/index.js'
 function mapStateToProps(state){
     //whatever is returned from here will show up as props on BookList
     return{

@@ -14,6 +14,7 @@ import DatePicker from 'material-ui/lib/date-picker/date-picker';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import BookList from '../containers/book_list';
+import BookDetail from '../containers/book_detail';
 
 const styles = {
   container: {
@@ -65,6 +66,7 @@ class Main extends React.Component {
           <AppBarExampleIconMenu/>
           <DatePicker hintText="Landscape Inline Dialog" container="inline" mode="landscape" />
           <BookList />
+          <BookDetail />
            <div style={styles.container}>
              <Dialog
             open={this.state.open}
