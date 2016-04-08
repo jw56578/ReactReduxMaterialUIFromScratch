@@ -3,6 +3,7 @@
  * which incorporates components providedby material-ui.
  */
 import React from 'react';
+import RaisedButton from 'material-ui/lib/raised-button';
 import AppBar from 'material-ui/lib/app-bar';
 import IconButton from 'material-ui/lib/icon-button';
 import NavigationClose from 'material-ui/lib/svg-icons/navigation/close';
@@ -10,7 +11,7 @@ import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
-
+import Dialog from 'material-ui/lib/dialog';
 
 const styles = {
   container: {
@@ -44,6 +45,9 @@ const AppBarExampleIconMenu = () => (
 class Main extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.state = {
+      open: false,
+    };
   }
   render() {
     return (
@@ -51,7 +55,11 @@ class Main extends React.Component {
           <AppBarExampleIconMenu/>
           <DatePicker hintText="Landscape Inline Dialog" container="inline" mode="landscape" />
            <div style={styles.container}>
-           HELLO
+           <RaisedButton
+            label="Super Secret Password"
+            primary={true}
+            onTouchTap={()=>this.setState({open:true})}
+            />
            </div>
       </div>
     );
