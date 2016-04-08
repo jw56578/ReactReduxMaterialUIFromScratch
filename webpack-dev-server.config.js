@@ -18,7 +18,7 @@ const config = {
   },
   //Server Configuration options
   devServer:{
-    contentBase: 'src/www',  //Relative directory for base of server
+    contentBase: '',  //Relative directory for base of server
     devtool: 'eval',
     hot: true,        //Live-reload
     inline: true,
