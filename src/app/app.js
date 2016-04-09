@@ -6,6 +6,10 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from '../reducers';
 import ReduxPromise from 'redux-promise';
+//browserHistory uses the technique without the has but you need to set your server up to serve the same thing regardles of url
+//hashHistory is easier
+import {Router,Route,Link, browserHistory,hashHistory} from 'react-router';
+import routes from './routes';
 
 //Needed for onTouchTap
 //Can go away when react 1.0 release
@@ -21,8 +25,15 @@ const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
   
 // Render the main app react component into the app div.
 // For more details see: https://facebook.github.io/react/docs/top-level-api.html#react.render
+//importing the routes from the route file and assigning to routes is not working for some reason
+//the route gets exported but when imported its not the same object, no idea why
 ReactDOM.render(<div>
 <Provider store={createStoreWithMiddleware(reducers)}>
-<Main />
+<Router history={hashHistory} routes={
+    routes
+} />
 </Provider>
 </div>, document.getElementById('app'));
+
+
+ 
