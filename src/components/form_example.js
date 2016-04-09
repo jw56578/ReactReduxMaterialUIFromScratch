@@ -21,7 +21,12 @@ class EnterInfo extends Component
                     if you view source on the rendered input in the browser you will see it now has a name value when you didn't explicitly give it one
                     onChange = title.onChange
                 */}
+                <div className={`${title.touched && title.invalid ? 'invalid-class' : ''}`}>
                 <input {...title} /><br/>
+                <div>{title.touched ? title.error : ''}</div>
+                </div>
+                
+                
                 Categories
                 <input {...categories}/><br/>
                 Content
@@ -33,12 +38,21 @@ class EnterInfo extends Component
     }
 }
 
+function validate(values){
+    const errors = {};
+    if(!values.title){
+        errors.title = "enter title";
+    }
+    return errors;
+    
+}
 
 //redux form just adds onto the normal way redux works
 //1st argument is the form config, then the normal things that redux takes, 2nd mapStateToProps,3rd mapDispatchToProps
 const formConfig = {
     form:'EnterInfoForm',
-    fields:['title','categories','content']   
+    fields:['title','categories','content'],
+    validate // the function used for validation
 };
 export default reduxForm(formConfig,null,{createSomethingFromForm})(EnterInfo);
 
