@@ -8,6 +8,8 @@ import AjaxReducer from './reducer_ajax';
 const rootReducer = combineReducers({
   books:BooksReducer,
   activeBook:ActiveBook,
+  //REDUX STEP #7 - add the reducer to the combinerReducers
+
   ajax:AjaxReducer
   
 });

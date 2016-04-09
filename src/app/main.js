@@ -17,6 +17,7 @@ import BookList from '../containers/book_list';
 import BookDetail from '../containers/book_detail';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+//REDUX STEP #2 - import the action creator (function) that is used to get some data
 import {fetchSomething} from '../actions/action_ajax';
 import ShowAjaxResult from '../containers/ajax_promise_consumer';
 //this is how you inline styles in react
@@ -58,6 +59,7 @@ class Main extends React.Component {
     this.doAjaxStuff = this.doAjaxStuff.bind(this);
   }
   doAjaxStuff(){
+      //REDUX STEP #5 - use the action creator
       this.props.fetchSomething(); 
   }
   render() {
@@ -77,6 +79,7 @@ class Main extends React.Component {
           <ShowAjaxResult />
           <BookList />
           <BookDetail />
+          {this.props.children}
            <div style={styles.container}>
              <Dialog
             open={this.state.open}
@@ -96,8 +99,9 @@ class Main extends React.Component {
     );
   }
 }
-
+//REDUX STEP #3 - Do this which puts the function on the props of the component
 function mapDispatchToProps(dispatch){
     return bindActionCreators({fetchSomething},dispatch);
 }
+//REDUX STEP #4 - Use connect to export a redux specific component, with mapDispatchToProps and/or mapStateToProps
 export default connect(null,mapDispatchToProps)(Main);

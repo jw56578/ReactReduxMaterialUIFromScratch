@@ -1,5 +1,6 @@
 import {FETCH_SOMETHING} from '../actions/action_ajax';
 
+//REDUX STEP #6 - create the reducer which is the thing that receives the result of the action creator
 
 export default function(state=null,action){
     //this is where redux promise does its work
