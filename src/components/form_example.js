@@ -4,10 +4,22 @@ import {createSomethingFromForm} from '../actions';
 
 class EnterInfo extends Component
 {
-
+    //not sure about this one, it traverses up the heirarchy looking for a parent node that has a property called router
+    //this looks like angular scope.parent.parent.....
+    //how else could this be handled, you need a reference to the current router
+    //you could create a module called current router and pass it in from app.js ?
     static contextTypes = {
-       
+       router:PropTypes.object
     };
+    
+    onSubmit(props){
+        this.props.createSomethingFromForm(props)
+        .then(()=>{
+            //something was done succesfully, passed validation, do something
+            this.context.router.push('/');
+        });;
+        
+    }
     render(){
         
         const {fields:{title,categories,content},handleSubmit} = this.props; // == const handleSubmit = this.props.handleSubmit
@@ -17,7 +29,7 @@ class EnterInfo extends Component
         
         return(
             <div>
-            <form onSubmit={handleSubmit(this.props.createSomethingFromForm)}>
+            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 Title
                 {/* 
                    {...title} just takes all the properties off of title and puts them into the input 
