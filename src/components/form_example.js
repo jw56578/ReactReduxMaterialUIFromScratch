@@ -1,9 +1,13 @@
-import React, {Component} from 'react';
+import React, {Component,PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
 import {createSomethingFromForm} from '../actions';
 
 class EnterInfo extends Component
 {
+
+    static contextTypes = {
+       
+    };
     render(){
         
         const {fields:{title,categories,content},handleSubmit} = this.props; // == const handleSubmit = this.props.handleSubmit
