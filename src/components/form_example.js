@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {reduxForm} from 'redux-form';
+import {createSomethingFromForm} from '../actions';
 
 class EnterInfo extends Component
 {
@@ -12,7 +13,7 @@ class EnterInfo extends Component
         
         return(
             <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(this.props.createSomethingFromForm)}>
                 Title
                 {/* 
                    {...title} just takes all the properties off of title and puts them into the input 
@@ -25,17 +26,21 @@ class EnterInfo extends Component
                 <input {...categories}/><br/>
                 Content
                 <input {...content}/><br/>
+                <button type="submit">Submit</button>
             </form>
             </div>
         );
     }
 }
 
-export default reduxForm({
+
+//redux form just adds onto the normal way redux works
+//1st argument is the form config, then the normal things that redux takes, 2nd mapStateToProps,3rd mapDispatchToProps
+const formConfig = {
     form:'EnterInfoForm',
     fields:['title','categories','content']   
-}
-)(EnterInfo);
+};
+export default reduxForm(formConfig,null,{createSomethingFromForm})(EnterInfo);
 
 /**
  * doing the above adds the value from the fields into the global state
