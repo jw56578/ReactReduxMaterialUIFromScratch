@@ -15,6 +15,7 @@ import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import BookList from '../containers/book_list';
 import BookDetail from '../containers/book_detail';
+import FormExample from '../components/form_example';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 //REDUX STEP #2 - import the action creator (function) that is used to get some data
@@ -81,6 +82,7 @@ class Main extends React.Component {
           <ShowAjaxResult />
           <BookList />
           <BookDetail />
+          <FormExample />
           {this.props.children}
            <div style={styles.container}>
              <Dialog
