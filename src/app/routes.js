@@ -9,7 +9,8 @@ class Test extends Component{
     }
 }
 
-const Test1 = ()=>{
+//this is how you send in props to dumb components
+const Test1 = ({prop1,prop2})=>{
     return <div> I'm on test {this.props.params.id}</div>
 };
 const Test2 = ()=>{
